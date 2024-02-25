@@ -1,0 +1,32 @@
+<section>
+  <div class="flex flex-col gap-5 items-start">
+    <label class="text-xl font-medium" for="location-search"
+      >Search for a new place</label
+    >
+    <div class="flex items-center gap-2">
+      <input
+        #stateSearch
+        class="px-3 py-2 rounded-md outline-none border border-blue-500 text-black"
+        type="text"
+        id="location-search"
+        placeholder="Ex : Chicago"
+      />
+      <button
+        (click)="searchHouse(stateSearch.value)"
+        class="bg-blue-500 px-3 py-2 rounded-md"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+  <div class="grid grid-cols-3 gap-5 mt-20">
+    <article *ngFor="let item of results">
+      <app-card
+        [name]="item.name"
+        (click)="selectHouse(item)"
+        [photo]="item.photo"
+        [city]="item.city"
+      ></app-card>
+    </article>
+  </div>
+</section>

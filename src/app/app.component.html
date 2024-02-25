@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<main class="container mx-auto mt-20">
+  <app-heroes *ngIf="!selectedHouse" [locationList]="houseList" (selectedHouseEvent)="updateSelectedHouse($event)"></app-heroes>
+  <section class="flex flex-col items-center justify-center gap-8" *ngIf="selectedHouse">
+    <h3 class="text-center text-xl font-semibold mb-10">Selected House</h3>
+    <img class="w-full h-full rounded-xl" src={{selectedHouse.photo}} alt="">
+    <p class="text-lg font-medium">{{selectedHouse.name}}</p>
+    <p>City : {{selectedHouse.city}}, State : {{selectedHouse.state}}</p>
+    <p>Available Units : {{selectedHouse.availableUnits}}</p>
+    <p>Wifi : {{selectedHouse.wifi ? "Exist": "None"}}</p>
+    <p>Laundry : {{selectedHouse.laundry ? "It Have": "None"}}</p>
+    <button (click)="backHandle()" class="bg-red-500 px-3 py-2 rounded-md w-full mt-10">Back</button>
+  </section>
+</main>
